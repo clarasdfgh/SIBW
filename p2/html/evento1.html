@@ -12,6 +12,10 @@
 			<link rel="stylesheet" type="text/css" href="../css/evento.css">
 			<link rel="preconnect" href="https://fonts.gstatic.com">
 			<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=K2D:wght@100&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+			<script src="../js/comments.js" defer></script>
+			<script src="../js/submit.js" defer></script>
+			<script src="../js/censor.js" defer></script>
 	</head>
 
 <!----------------------------------------------------------------------------->
@@ -42,21 +46,48 @@
 <!----------------------------------------------------------------------------->
 
 		<div class="social">
-			<a href="evento5_print.html"><button class="print">Imprimir</button></a>
+			<button type="button" class="collapsible" id="collapsible" >Comentar</button>
+			<a href="evento1_print.html"><button class="print">Imprimir</button></a>
 			<a href="https://twitter.com/"><button class="media">Twitter</button></a>
 			<a href="https://www.facebook.com/"><button class="media">Facebook</button></a>
+		</div>
+
+		<div class="comments" id="comments">
+			<article>
+				<h3>Irina S.</h3><small>21/03/2021, 18:03</small>
+				<p>Tortor aliquam nulla facilisi cras. Pellentesque habitant morbi tristique senectus et.</p>
+			</article>
+
+			<article>
+				<h3>Antón C.</h3><small>17/02/2021, 11:47 </small>
+				<p>Dignissim convallis aenean
+				et tortor at risus viverra adipiscing. Tempor orci dapibus ultrices in.</p>
+			</article>
+
+			<article>
+				<h3><span id="nombre_submit" class="comment_submit"></h3><small><span id="fecha_submit" class="comment_submit"></small>
+				<p><span id="comment_submit" class="comment_submit"></p>
+			</article>
+
+			<form onsubmit="return false">
+				<input type="text" id="name" placeholder="Nombre" class="name">
+				<input type="text" id="mail" placeholder="Correo" class="mail">
+				<input type="text" id="comm" placeholder="Comentario.." class="comm" onkeyup="censor(this)">
+				<input type="submit" id="send" value="↵" class="enviar" onclick="showInput();">
+			</form>
+
 		</div>
 
 <!----------------------------------------------------------------------------->
 
 		<div class="main">
 			<article>
-				<h1>Tour Sierra Madrona</h1>
-				<h3>C & L Routes </h3>
-				<h3>10-04-2020</h3>
+				<h1>Camping en Valle de Alcudia</h1>
+				<h3>Organiza: CLR & co. </h3>
+				<h3>23-05-2021</h3>
 
 				<div class="infoCartel">
-					<img alt="cartel evento" src="../img/tour.PNG" class="imagenCartel">
+					<img alt="cartel evento" src="../img/camping.PNG" class="imagenCartel">
 					<p class="txtCartel">Créditos: CLR </p>
 				</div>
 
