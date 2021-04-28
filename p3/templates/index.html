@@ -1,0 +1,70 @@
+{% extends "padre.html" %}
+  {% block mensaje %}
+    Página principal
+  {% endblock %}
+
+  {% block central %}
+    <!----------------------------------------------------------------------------->
+      <div class="main">
+
+        {% for i in eventos %}
+          <a href="evento.php?ev={{ i['id_evento'] }}">
+            <article>
+              <div>
+                <img src="{{ i['imagen'] }}">
+              </div>
+              <h3>{{i['nombre']}}</h3>
+            </article>
+          </a>
+        {%endfor%}
+
+<!--
+        <a href="evento.php?ev=1">
+          <article>
+            <div>
+              <img src="../images/camping.PNG">
+            </div>
+            <h3>Camping en Valle de Alcudia</h3>
+          </article>
+        </a>
+
+        <a href="evento.php?ev=2">
+          <article>
+            <div>
+              <img src="../images/kayak.PNG">
+            </div>
+            <h3>Cursos de kayak - Cabo de Gata</h3>
+          </article>
+        </a>
+
+        <a href="evento.php?ev=3">
+          <article>
+            <div>
+              <img src="../images/cata.PNG">
+            </div>
+            <h3>Brunch terraza mirador</h3>
+          </article>
+        </a>
+
+        <a href="evento.php?ev=4">
+          <article>
+            <div>
+              <img src="../images/senderismo.PNG">
+            </div>
+            <h3>Ruta de Senderismo por Los Pontones</h3>
+          </article>
+        </a>
+
+        <a href="evento.php?ev=5">
+          <article>
+            <div>
+              <img src="../images/tour.PNG">
+            </div>
+            <h3>Tour Sierra Madrona</h3>
+          </article>
+        </a>  -->
+      </div>
+
+
+  <!----------------------------------------------------------------------------->
+  {% endblock %}
