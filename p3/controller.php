@@ -85,6 +85,24 @@
       return $comentario;
     }
 
+
+    function getComentariosEvento($idEv) {
+        $mysqli = conectarBD();
+
+        $comentarios = array();
+
+        $selectcomments = "SELECT * FROM comentarios WHERE id_evento=" . $idEv;
+        $querycomments = mysqli_query($mysqli,$selectcomments);
+
+          for($j = 1; $j <= mysqli_num_rows($querycomments) ; $j++){
+              $comentarios[$j] = getComentario($idEv, $j);
+          }
+
+        return $comentarios;
+    }
+
+    //Esta función devuelve TODOS los comentarios en todos los eventos.
+    //No creo que le saque ninguna utilidad pero se queda por si acaso
     function getComentarios() {
         $mysqli = conectarBD();
 
@@ -109,6 +127,47 @@
         return $comentarios;
     }
 
+    function getBadWord($idWord) {
+  		$mysqli = conectarBD();
+
+  		$word = array('id_word' => $idWord,
+                      'badword' => 'WWWW');
+
+
+  		if(is_numeric($idWord)){
+  			$res = $mysqli->query("SELECT badword
+  				                    FROM badwords WHERE id_word=" . $idWord);
+  			if ($res->num_rows > 0) {
+
+  				$row = $res->fetch_assoc();
+
+  				$word = array('id_word' => $idWord,
+                        'badword' => $row['badword']);
+  			}
+  		}
+
+  		return $word['badword'];
+  	}
+
+    function getBadWords() {
+        $mysqli = conectarBD();
+
+        $badwords = array();
+
+        $select = "SELECT badword FROM badwords";
+        $query = mysqli_query($mysqli,$select);
+
+
+        for($i = 1; $i <= mysqli_num_rows($query) ; $i++){
+
+          $badwords[$i] = getBadWord($i);
+
+        }
+
+        $badwordsjson = json_encode($badwords);
+
+        return $badwordsjson;
+    }
 
 
 ?>

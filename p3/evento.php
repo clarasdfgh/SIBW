@@ -14,8 +14,9 @@
 	}
 
 	$evento = getEvento($idEv);
-  $comentarios = getComentarios();
+  $comentarios = getComentariosEvento($idEv);
+  $badwords = getBadWords();
 
 
-  echo $twig->render('evento.html', ['evento' => $evento,'comentarios' => $comentarios]);
+  echo $twig->render('evento.html', ['evento' => $evento,'comentarios' => $comentarios, 'badwords' => $badwords]);
 ?>

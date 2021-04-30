@@ -13,7 +13,7 @@
   {% block central %}
     <div class="social">
     			<button type="button" class="collapsible" id="collapsible" >Comentar</button>
-    			<a href="evento_print.php"><button class="print">Imprimir</button></a>
+    			<a href="evento_print.php?ev={{ evento['id_evento'] }}"><button class="print">Imprimir</button></a>
     			<a href="https://twitter.com/"><button class="media">Twitter</button></a>
     			<a href="https://www.facebook.com/"><button class="media">Facebook</button></a>
     		</div>
@@ -26,18 +26,10 @@
               <p>{{i['comentario']}}</p>
             </article>
           {% endfor %}
-<!--
-    			<article>
-    				<h3>Irina S.</h3><small>21/03/2021, 18:03</small>
-    				<p>Tortor aliquam nulla facilisi cras. Pellentesque habitant morbi tristique senectus et.</p>
-    			</article>
 
-    			<article>
-    				<h3>Antón C.</h3><small>17/02/2021, 11:47 </small>
-    				<p>Dignissim convallis aenean
-    				et tortor at risus viverra adipiscing. Tempor orci dapibus ultrices in.</p>
-    			</article>
--->
+
+
+<!--Esto se cambia en la siguiente práctica-->
     			<article>
     				<h3><span id="nombre_submit" class="comment_submit"></h3><small><span id="fecha_submit" class="comment_submit"></small>
     				<p><span id="comment_submit" class="comment_submit"></p>
@@ -46,9 +38,12 @@
     			<form onsubmit="return false">
     				<input type="text" id="name" placeholder="Nombre" class="name">
     				<input type="text" id="mail" placeholder="Correo" class="mail">
-    				<input type="text" id="comm" placeholder="Comentario.." class="comm" onkeyup="censor(this)">
+    				<input type="text" id="comm" placeholder="Comentario.." class="comm" onkeyup="censor(this, {{ badwords }})">
     				<input type="submit" id="send" value="↵" class="enviar" onclick="showInput();">
     			</form>
+
+          <div class="bad_word" badword="{{ badwords }}">
+          </div>
 
     		</div>
 
@@ -65,9 +60,8 @@
     					<p class="txtCartel">Créditos: CLR </p>
     				</div>
 
-    				<p>{{ evento['descripcion'] }}<br><br>
+    				<p>{{ evento['descripcion'] }}<br><br></p>
 
-    				</p>
     				<h3>Contacto: +{{ evento['telefono']}} </h3>
     			</article>
     		</div>
