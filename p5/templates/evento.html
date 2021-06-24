@@ -1,0 +1,99 @@
+{% extends "padre.html" %}
+  {% block mensaje %}
+    Página evento
+  {% endblock %}
+
+  {% block estilos %}
+    <link rel="stylesheet" type="text/css" href="../styles/style_evento.css">
+    <script src="../js/comments.js" defer></script>
+    <script src="../js/submit.js" defer></script>
+    <script src="../js/censor.js" defer></script>
+  {% endblock %}
+
+  {% block central %}
+    <div class="social">
+    			<button type="button" class="collapsible" id="collapsible" >Comentar</button>
+    			<a href="evento_print.php?ev={{ evento['id_evento'] }}"><button class="print">Imprimir</button></a>
+    			<a href="https://twitter.com/"><button class="media">Twitter</button></a>
+    			<a href="https://www.facebook.com/"><button class="media">Facebook</button></a>
+    		</div>
+
+    		<div class="comments" id="comments">
+
+          {% for i in comentarios %}
+            <article>
+              <h3>{{i['nombre']}}</h3><small>{{i['fecha']}}</small>
+
+							{% if i['editado']==1 %}
+								<small>***</small>
+							{% endif %}
+
+              <p>{{i['comentario']}}</p>
+
+						{% if puedeModerar == true %}
+							<div class="mod">
+									<form action="../scriptsphp/editarComentario.php?ev={{idEv}}&com={{i}}" method="POST">
+										<input type="submit" id="edit" value="✎" class="edit">
+									</form>
+
+									<form action="../scriptsphp/deletecomment.php?ev={{idEv}}&com={{i['id_comentario']}}" method="POST">
+				    				<input type="submit" id="delete" value="☒" class="delete">
+				    			</form>
+							</div>
+						{% endif %}
+
+            </article>
+          {% endfor %}
+
+
+				{% if user %}
+    			<form action="../scriptsphp/comment.php?ev={{idEv}}" method="POST">
+    				<input type="text" id="comm" placeholder="Comentario.." class="comm" name="comm" onkeyup="censor(this, {{ badwords }})" required>
+    				<input type="submit" id="send" value="↵" class="enviar">
+    			</form>
+
+          <div class="bad_word" badword="{{ badwords }}">
+          </div>
+				{% endif %}
+
+    		</div>
+
+    <!----------------------------------------------------------------------------->
+
+    		<div class="main">
+    			<article>
+    				<h1>{{ evento['nombre'] }}</h1>
+    				<h3>Organiza: {{ evento['organiza'] }} </h3>
+    				<h3>{{ evento['fecha'] }}</h3>
+
+    				<div class="infoCartel">
+    					<img alt="cartel evento" src="{{evento['imagen']}}" class="imagenCartel">
+    					<p class="txtCartel">Créditos: CLR </p>
+    				</div>
+
+						{% if puedeGestionar == true %}
+						<div class="mod">
+							<form action="../scriptsphp/deleteevent.php?ev={{idEv}}" method="POST">
+								<input type="submit" id="delete" value="☒" class="delete">
+							</form>
+							<form action="editarEvento.php?ev={{idEv}}" method="POST">
+								<input type="submit" id="edit" value="✎" class="edit">
+							</form>
+							<form action="tags.php?ev={{idEv}}" method="POST">
+								<input type="submit" id="tags" value="⊕" class="tags">
+							</form>
+						</div>
+						{% endif %}
+
+    				<p>{{ evento['descripcion'] }}<br><br></p>
+
+    				<h3>Contacto: +{{ evento['telefono']}} </h3>
+
+						<p>Tags: </p>
+						{% for i in tags %}
+								<small>{{i['texto']}}</small>
+						{% endfor %}
+    			</article>
+    		</div>
+
+  {% endblock %}

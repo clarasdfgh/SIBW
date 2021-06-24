@@ -1,0 +1,50 @@
+{% extends "padre.html" %}
+  {% block mensaje %}
+    Página principal
+  {% endblock %}
+
+
+	{% block central %}
+
+		{% if user %}
+
+			<div class="main">
+				<div class="gestor">
+					<h2>Apodo: {{ user['nick'] }}</h2>
+					<h2>E-mail: {{ user['mail'] }}</h2>
+					<h2>Permisos: {{ user['tipo'] }}</h2>
+
+					<form action="../scriptsphp/logout.php" method="post">
+						 <input type="submit" value="Salir" />
+					</form>
+
+				</div>
+			</div>
+
+		{% else %}
+
+			<div class="main">
+					<a href="entrar.php">
+						<article>
+							<center>
+								<div>
+									<img src="../images/user.png">
+								</div>
+								<h1>Ya tengo cuenta</h1>
+							</center>
+						</article>
+					</a>
+					<a href="registro.php">
+						<article>
+							<center>
+								<div>
+									<img src="../images/user.png">
+								</div>
+								<h1>Registrar nueva cuenta</h1>
+							</center>
+						</article>
+					</a>
+			</div>
+
+		{% endif %}
+	{% endblock%}

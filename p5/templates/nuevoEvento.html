@@ -1,0 +1,33 @@
+{% extends "padre.html" %}
+  {% block mensaje %}
+    Página principal
+  {% endblock %}
+
+	{% block central %}
+		{% if permitidocrear == true %}
+
+		        <!----------------------------------------------------------------------------->
+		          <div class="main">
+		            <div class="gestor">
+		              <h2>Nuevo evento: </h2>
+		              <form action="nuevoEvento.php" method="post">
+		                  <input type="text" name="nombre" placeholder="Nombre..." required /><br>
+		                  <input type="text" name="fecha" placeholder="Fecha..." required /><br>
+		                  <input type="text" name="organiza" placeholder="Organizador..." required /><br>
+		                  <input type="text" name="telefono" placeholder="Teléfono..." required /><br>
+											<input type="text" name="descripcion" placeholder="Descripcion..." required /><br>
+		                  <input type="text" name="imagen" placeholder="Ruta a imagen..." required /><br>
+		                  <input type="submit" name="crear" value="Crear evento" />
+		              </form>
+		            </div>
+		          </div>
+		      <!----------------------------------------------------------------------------->
+		{% else %}
+		<div class="main">
+			<div class="gestor">
+				<h2>Quieto parao! No tienes permiso para realizar esta acción.</h2>
+				<p>Para disfrutar de Plannr a tope, <a href="loginorsignup.php"> entra o regístrate</a>.</p>
+			</div>
+		</div>
+		{% endif %}
+	{% endblock %}

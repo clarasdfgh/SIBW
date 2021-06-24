@@ -1,0 +1,26 @@
+{% extends "padre.html" %}
+  {% block mensaje %}
+    Página principal
+  {% endblock %}
+
+
+	{% block central %}
+	<div class="main">
+			<a href="entrar.php">
+				<article>
+					<div>
+						<img src="../images/user.png">
+					</div>
+					<h1>Ya tengo cuenta</h1>
+				</article>
+			</a>
+			<a href="registro.php">
+				<article>
+					<div>
+						<img src="../images/user.png">
+					</div>
+					<h1>Crear una nueva cuenta</h1>
+				</article>
+			</a>
+	</div>
+	{% endblock%}

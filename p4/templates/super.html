@@ -1,0 +1,39 @@
+{% extends "padre.html" %}
+  {% block mensaje %}
+    Página principal
+  {% endblock %}
+
+	{% block central %}
+
+		        <!----------------------------------------------------------------------------->
+		          <div class="main">
+		            <div class="gestor">
+		              <h2>Nuevo evento: </h2>
+		              <form action="super.php" method="post">
+		                  <input type="text" name="nombre" placeholder="Nombre..."/><br>
+		                  <input type="text" name="fecha" placeholder="Fecha..."/><br>
+		                  <input type="text" name="organiza" placeholder="Organizador..."/><br>
+											<input type="text" name="fecha" placeholder="Fecha..."/><br>
+		                  <input type="text" name="telefono" placeholder="Teléfono..."/><br>
+											<input type="text" name="descripcion" placeholder="Descripcion..."/><br>
+		                  <input type="text" name="imagen" placeholder="Ruta a imagen..."/><br>
+		                  <input type="submit" value="Crear evento" />
+		              </form>
+
+
+		              <h2>Editar evento y añadir etiquetas: </h2>
+		              <form action="super.php" method="post">
+		                  <input type="text" name="idevento" placeholder="Id del evento..." /><br>
+		                  <input type="submit" value="Ir al evento" />
+		              </form>
+
+									<h2>Modificar permisos de usuario: </h2>
+									<form action="super.php" method="post">
+											<input type="text" name="iduser" placeholder="Id del usuario..." /><br>
+											<input type="submit" value="Ir al user" />
+									</form>
+
+		            </div>
+		          </div>
+		      <!----------------------------------------------------------------------------->
+	{% endblock %}

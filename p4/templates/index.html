@@ -1,0 +1,30 @@
+{% extends "padre.html" %}
+  {% block mensaje %}
+    Página principal
+  {% endblock %}
+
+  {% block central %}
+    <!----------------------------------------------------------------------------->
+			<div class="nav">
+				<button>Hola {{ user['nick'] }}</button>
+				<a href="gestor.php"><button>Soy gestor</button></a>
+				<a href="super.php"><button>Soy superusuario</button></a>
+			</div>
+
+      <div class="main">
+
+        {% for i in eventos %}
+          <a href="evento.php?ev={{ i['id_evento'] }}">
+            <article>
+              <div>
+                <img src="{{ i['imagen'] }}">
+              </div>
+              <h3>{{i['nombre']}}</h3>
+            </article>
+          </a>
+        {%endfor%}
+
+      </div>
+
+  <!----------------------------------------------------------------------------->
+  {% endblock %}

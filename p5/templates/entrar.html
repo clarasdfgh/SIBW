@@ -1,0 +1,25 @@
+{% extends "padre.html" %}
+  {% block mensaje %}
+    Página principal
+  {% endblock %}
+
+
+	{% block central %}
+      <!----------------------------------------------------------------------------->
+			<div class="main">
+          <div class="login">
+            <h2>¿Ya tienes cuenta?</h2>
+            <form action="entrar.php" method="post">
+                <input type="text" name="nick" placeholder="Apodo..." value="" required/><br>
+                <input type="password" name="pass" placeholder="Contraseña..." value="" required/><br>
+
+								{% if formulario['activado'] == true %}
+									<p> Algo ha fallado </p>
+								{% endif %}
+
+                <input type="submit" name="login" value="Entrar" />
+            </form>
+					</div>
+				</div>
+    <!----------------------------------------------------------------------------->
+	{% endblock %}

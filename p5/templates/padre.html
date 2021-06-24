@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+      <title>Plannr</title>
+
+      <meta charset="UTF-8">
+      <meta name="author" content="CLR">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      {% block estilos %}
+      <link rel="stylesheet" type="text/css" href="../styles/style.css">
+      {% endblock %}
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=K2D:wght@100&display=swap" rel="stylesheet">
+
+			<script src='js/buscador.js' type='module'></script>
+  </head>
+
+<!----------------------------------------------------------------------------->
+
+  <body>
+      {% block cabecera %}
+            <div class="topbar">
+
+              <a href="index.php">
+                <img src="../images/plannr.png" class="logo">
+              </a>
+
+              <input type="text" class="buscador" placeholder="Search.." onkeyup="showResult(this.value)">
+							<div class="busqueda">
+							</div>
+
+              <a href="loginorsignup.php">
+                <figure>
+                  <img src="../images/user.png" class="usuario">
+									{% if user %}
+                  	<figcaption> Perfil de {{ user['nick'] }} </figcaption>
+									{% else %}
+										<figcaption> ¡Regístrate! </figcaption>
+									{% endif %}
+                </figure>
+              </a>
+
+            </div>
+
+        <!----------------------------------------------------------------------------->
+
+            <div class="nav">
+                <a href="panel.php"><button>Panel de control</button></a>
+                <a href="nuevoEvento.php"><button>Nuevo evento</button></a>
+            </div>
+
+        <!----------------------------------------------------------------------------->
+      {% endblock %}
+
+			{% block perfil %}
+
+			{% endblock%}
+
+      {% block central %}
+
+      <p>Parte central de la plantilla</p>
+
+      {% endblock %}
+
+    </body>
+
+
+		{% block footer %}
+    <footer>
+        <h2>Contacta con nosotros:</h2>
+        <small> Tfno: +555 123 000 </small>
+        <br/>
+        <small> E-mail: ayuda_plannr@plannr.com</small>
+        <br/>
+        <small> PLANNR es un proyecto de una página de organización de eventos desarrollada por Clara R</small>
+        <small> para la Universidad de Granada, práctica 1 de la asignatura SIBW</small>
+    </footer>
+		{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "padre.html" %}
+  {% block mensaje %}
+    Página principal
+  {% endblock %}
+
+	{% block central %}
+		        <!----------------------------------------------------------------------------->
+		          <div class="main">
+		            <div class="gestor">
+		              <h2>Editar evento: </h2>
+		              <form action="editarEvento.php?ev={{'idEv'}}" method="post">
+		                  <input type="text" name="nombre" placeholder="Nombre..." /><br>
+		                  <input type="text" name="fecha" placeholder="Fecha..." /><br>
+		                  <input type="text" name="organiza" placeholder="Organizador..." /><br>
+		                  <input type="text" name="telefono" placeholder="Teléfono..." /><br>
+											<input type="text" name="descripcion" placeholder="Descripcion..." /><br>
+		                  <input type="text" name="imagen" placeholder="Ruta a imagen..." /><br>
+		                  <input type="submit" name="crear" value="Crear evento" />
+		              </form>
+		            </div>
+		          </div>
+		      <!----------------------------------------------------------------------------->
+	{% endblock %}

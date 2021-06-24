@@ -1,0 +1,74 @@
+{% extends "padre.html" %}
+  {% block mensaje %}
+    Página principal
+  {% endblock %}
+
+	{% block central %}
+		{% if user%}
+		        <!----------------------------------------------------------------------------->
+		          <div class="main">
+		            <div class="gestor">
+
+									<h2>Editar mi perfil: </h2>
+								  <form action="../scriptsphp/modcuenta.php" method="post">
+								 		 <input type="text" name="nuevonick" placeholder="Nick..." /><br>
+										 <input type="text" name="nuevomail" placeholder="Mail..." /><br>
+										 <input type="password" name="nuevopass" placeholder="Contraseña..." value=""/><br>
+								 		 <input type="submit" value="Editar" />
+								  </form>
+
+									{% if permitidopermisos %}
+										<h2>Modificar permisos de usuario: </h2>
+										<form action="panel.php" method="post">
+												<input type="text" name="iduser" placeholder="Id del usuario..." /><br>
+												<input type="text" name="iduser" placeholder="Tambien puedes usar el nick..." /><br>
+												<input type="submit" value="Ir al user" />
+										</form>
+									{% endif %}
+
+								{% if permitidoeditar%}
+		              <h2>Lista de eventos: </h2>
+									{% for i in eventos %}
+										<article class="lista">
+											<h4>{{i['nombre']}}</h4>
+										</article>
+									{% endfor %}
+
+								{% endif %}
+
+								{% if permitidomod %}
+									<h2>Lista de comentarios: </h2>
+									{% for j in comentarios %}
+										<article class="lista">
+											<small>{{j['comentario']}}</small>
+										</article>
+									{% endfor %}
+								{% endif %}
+		            </div>
+
+
+								{% if editusuario %}
+								<article class="edicion">
+									<h2>wwwwwwwwwww</h2>
+								</article>
+								{% endif %}
+
+		          </div>
+
+
+
+			{% else %}
+
+				<div class="main">
+					<div class="gestor">
+						<h2>No hay nada por aquí</h2>
+						<p>No hay nada que gestionar, para conseguir tu propia cuenta <a href="loginorsignup.php"> entra o regístrate</a>.</p>
+					</div>
+				</div>
+
+			{% endif %}
+		      <!----------------------------------------------------------------------------->
+	{% endblock %}
+
+	{% block footer %}
+	{% endblock %}

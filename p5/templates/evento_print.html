@@ -1,0 +1,24 @@
+
+  {% block mensaje %}
+    Versión para imprimir
+  {% endblock %}
+
+  {% block estilos %}
+    <link rel="stylesheet" type="text/css" href="../styles/style_print.css">
+  {% endblock %}
+
+  {% block central %}
+
+    		<div class="main">
+    			<article>
+            <h1>{{ evento['nombre'] }}</h1>
+    				<h3>Organiza: {{ evento['organiza'] }} </h3>
+    				<h3>{{ evento['fecha'] }}</h3>
+
+    				<p>{{ evento['descripcion'] }}<br><br>
+
+    				<h3>Contacto: +{{ evento['telefono']}} </h3>
+    			</article>
+    		</div>
+
+  {% endblock %}

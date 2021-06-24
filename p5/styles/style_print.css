@@ -1,0 +1,25 @@
+*{
+  font-family: Arial;
+  background-color: white;
+  color: black;
+}
+
+html{
+  height: auto;
+  margin: auto;
+  width: auto;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+img{
+  top: 5%;
+  right: 5%;
+  height: 8em;
+  width: 14em;
+  position: fixed;
+}
+
+.main article p{
+	width: 60em;
+}
